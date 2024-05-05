@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/web_app_guild/static/css/main.f855e6bc.css",
+    "main.js": "/web_app_guild/static/js/main.b2e2b68b.js",
+    "static/js/453.fa03ce6d.chunk.js": "/web_app_guild/static/js/453.fa03ce6d.chunk.js",
+    "index.html": "/web_app_guild/index.html",
+    "main.f855e6bc.css.map": "/web_app_guild/static/css/main.f855e6bc.css.map",
+    "main.b2e2b68b.js.map": "/web_app_guild/static/js/main.b2e2b68b.js.map",
+    "453.fa03ce6d.chunk.js.map": "/web_app_guild/static/js/453.fa03ce6d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.b2e2b68b.js"
+  ]
+}
