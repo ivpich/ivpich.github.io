@@ -35,3 +35,17 @@
   padding-left: 0px; /* Indent text to distinguish from labels */
   color: #fff; /* White color for text content */
 }
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 100%; /* Full width */
+  max-width: 400px; /* Max width for the form */
+  background-color: rgba(103, 143, 106, 0.21); /* Similar to members item */
+  border-radius: 50px; /* Rounded corners for consistency */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soft shadow for depth */
+  transition: transform 0.3s; /* Smooth transformation effect */
+  margin: 20px auto; /* Centering in the view and adding vertical spacing */
+}

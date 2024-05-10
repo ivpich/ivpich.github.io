@@ -4,10 +4,19 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Navigate
+  Navigate, useLocation
 } from 'react-router-dom';
 import Profile from './Profile'; // Make sure to import the Profile component
 import Welcome from './Welcome'; // Assuming Welcome is also a separate component
+import NavBar from './NavBar'; // Make sure to import the NavBar component
+import Members from './Members';
+
+
+function ConditionalNavBar() {
+  const location = useLocation();
+  return location.pathname !== "/welcome" ? <NavBar /> : null;
+}
+
 
 function App() {
   let tg = window.Telegram.WebApp;
@@ -50,7 +59,9 @@ function App() {
           <Route path="/" element={userExists ? <Navigate to="/profile" replace /> : <Navigate to="/welcome" replace />} />
           <Route path="/welcome" element={<Welcome onJoin={() => setUserExists(true)} />} />
           <Route path="/profile" element={<Profile userData={userData} onSave={handleSaveProfile} />} />
+          <Route path="/members" element={<Members />} />
         </Routes>
+        <ConditionalNavBar />
       </div>
     </Router>
   );

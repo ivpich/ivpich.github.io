@@ -1,0 +1,47 @@
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Ensures two columns, more explicit */
+  gap: 20px;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.member-item {
+  text-align: center;
+  background-color: rgba(103, 143, 106, 0.21); /* Darker and subtler shade */
+  padding: 15px;
+  border-radius: 50px; /* More rounded corners */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soft shadow for depth */
+  transition: transform 0.3s; /* Smooth transformation on hover */
+}
+
+.member-item:hover {
+  transform: scale(1.05); /* Slight scale up on hover for interactivity */
+}
+
+.member-image {
+  width: 120px; /* Slightly larger */
+  height: 120px;
+  border-radius: 50%; /* Fully rounded */
+  border: 3px solid #4a4a4a; /* Subtle border for the image */
+}
+
+.member-name {
+  font-weight: bold;
+  color: #ffffff; /* Ensure text is white for readability */
+  margin-top: 10px; /* Space between image and name */
+}
+
+.member-title {
+  color: #cccccc; /* Lighter color for non-essential info */
+}
+
+.page-title {
+  text-align: center;
+  color: white; /* Adjust color based on your theme */
+  margin-top: 20px;
+  margin-bottom: 40px; /* More space before the grid starts */
+  font-size: 24px; /* Larger font size for prominence */
+  font-weight: bold; /* Bold font weight for importance */
+}
