@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Welcome.css';  // Ensure you have a CSS file for styles
 
 function Welcome({ onJoin }) {
   const navigate = useNavigate();
@@ -10,11 +11,12 @@ function Welcome({ onJoin }) {
   };
 
   return (
-    <div className="welcome">
-      <h1>Welcome to Our Telegram Guild!</h1>
-      <p>We're excited to have you join us. Click below to set up your profile and get started.</p>
-      <button onClick={handleJoin} className="join-button">Join the Guild</button>
-    </div>
+      <div className="welcome-container">
+          <img src="/img.png" alt="Shield" className="welcome-image"/>
+          <h1>Гильдия - надежные люди всегда нужны</h1>
+          <p>Акселерация вашего социального капитала.</p>
+          <button onClick={handleJoin} className="join-button">Вступить в Гильдию</button>
+      </div>
   );
 }
 

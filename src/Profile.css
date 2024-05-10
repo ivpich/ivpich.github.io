@@ -14,7 +14,7 @@
   background-size: cover;
   border-radius: 50%;
   margin-bottom: 20px;
-  border: 2px solid rgba(255, 255, 255, 0.37); /* White border for profile image */
+  border: 2px solid rgba(253, 253, 253, 0.56); /* White border for profile image */
 }
 
 .profile-field {
@@ -24,14 +24,14 @@
 }
 
 .profile-field label {
-  font-weight: bold;
+  font-weight: 900;
   display: block;
   margin-bottom: 5px;
-  color: #ccc; /* Light grey color for labels */
+  color: #ffffff; /* Light grey color for labels */
 }
 
 .profile-field p {
-  font-weight: 400; /* Normal font weight for content */
-  padding-left: 10px; /* Indent text to distinguish from labels */
+  font-weight: 550; /* Normal font weight for content */
+  padding-left: 0px; /* Indent text to distinguish from labels */
   color: #fff; /* White color for text content */
 }

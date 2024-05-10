@@ -30,15 +30,15 @@ function Profile({ userData, onSave }) {
     <div className="profile-container">
       <div className="profile-image"></div>
       <div className="profile-field">
-        <label>First Name:</label>
+        <label>Имя: </label>
         <div>{editMode ? <input name="firstName" value={userDetails.firstName} onChange={handleChange} /> : <p>{userDetails.firstName}</p>}</div>
       </div>
       <div className="profile-field">
-        <label>Last Name:</label>
+        <label>Фамилия: </label>
         <div>{editMode ? <input name="lastName" value={userDetails.lastName} onChange={handleChange} /> : <p>{userDetails.lastName}</p>}</div>
       </div>
       <div className="profile-field">
-        <label>Bio:</label>
+        <label>О себе: </label>
         <div>{editMode ? <textarea name="bio" value={userDetails.bio} onChange={handleChange} /> : <p>{userDetails.bio}</p>}</div>
       </div>
       <button onClick={editMode ? handleSave : handleEdit}>{editMode ? 'Save' : 'Edit'}</button>
