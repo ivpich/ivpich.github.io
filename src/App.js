@@ -1,24 +1,58 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate
+} from 'react-router-dom';
+import Profile from './Profile'; // Make sure to import the Profile component
+import Welcome from './Welcome'; // Assuming Welcome is also a separate component
 
 function App() {
+  let tg = window.Telegram.WebApp;
+  const [userData, setUserData] = useState({});
+  const [userExists, setUserExists] = useState(false); // Mock state for user existence
+
+  useEffect(() => {
+    if (tg) {
+      tg.ready();
+      const initDataUnsafe = tg.initDataUnsafe;
+      if (initDataUnsafe && initDataUnsafe.user) {
+        const user = {
+          id: initDataUnsafe.user.id,
+          firstName: initDataUnsafe.user.first_name,
+          lastName: initDataUnsafe.user.last_name || 'Not provided',
+        };
+        setUserData(user);
+        checkUserExistence(user.id); // Mock function to check user existence
+      }
+    } else {
+      console.error("Telegram WebApp API is not available.");
+    }
+  }, []);
+
+  // Mock function to simulate checking user existence in database
+  const checkUserExistence = (userId) => {
+    // This would typically be an API call
+    setUserExists(false); // Change this based on real API response
+  };
+
+  const handleSaveProfile = (profileData) => {
+    console.log('Profile Data to Save:', profileData);
+    // Here you would typically make an API call to save the data to your backend
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={userExists ? <Navigate to="/profile" replace /> : <Navigate to="/welcome" replace />} />
+          <Route path="/welcome" element={<Welcome onJoin={() => setUserExists(true)} />} />
+          <Route path="/profile" element={<Profile userData={userData} onSave={handleSaveProfile} />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

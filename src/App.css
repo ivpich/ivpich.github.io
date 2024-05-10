@@ -1,38 +1,41 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+body {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  background-color: rgb(10, 27, 10); /* Dark background */
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+input, textarea, button {
+  font-family: inherit;
+  margin: 8px 0;
+  width: 100%;
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input, textarea {
+  padding: 10px;
+  background-color: #333;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 300; /* Lighter font weight for inputs for contrast */
+}
+
+button {
+  background-color: #040c01; /* Dark Emerald Green */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: bold; /* Bold text for actions */
+}
+
+button:hover {
+  background-color: rgba(5, 14, 4, 0.95); /* Slightly lighter Green for hover */
 }

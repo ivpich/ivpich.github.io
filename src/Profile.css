@@ -1,0 +1,37 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 100%; /* Full width */
+  max-width: 400px; /* Max width for the form */
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  background-image: url('/public/default-profile.jpg');
+  background-size: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.37); /* White border for profile image */
+}
+
+.profile-field {
+  text-align: left;
+  width: 100%;
+  padding: 8px 0;
+}
+
+.profile-field label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #ccc; /* Light grey color for labels */
+}
+
+.profile-field p {
+  font-weight: 400; /* Normal font weight for content */
+  padding-left: 10px; /* Indent text to distinguish from labels */
+  color: #fff; /* White color for text content */
+}
