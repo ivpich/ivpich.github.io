@@ -4,61 +4,75 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Navigate, useLocation
+  Navigate,
+  useLocation
 } from 'react-router-dom';
-import Profile from './Profile'; // Make sure to import the Profile component
-import Welcome from './Welcome'; // Assuming Welcome is also a separate component
-import NavBar from './NavBar'; // Make sure to import the NavBar component
+import Profile from './Profile';
+import Welcome from './Welcome';
+import NavBar from './NavBar';
 import Members from './Members';
-
+import { fetchUser, createUser } from './api';
 
 function ConditionalNavBar() {
   const location = useLocation();
   return location.pathname !== "/welcome" ? <NavBar /> : null;
 }
 
-
 function App() {
-  let tg = window.Telegram.WebApp;
-  const [userData, setUserData] = useState({});
-  const [userExists, setUserExists] = useState(false); // Mock state for user existence
+  const [userData, setUserData] = useState(null);
+  const [userExists, setUserExists] = useState(false);
+  const [loading, setLoading] = useState(true);  // To handle initial loading state
 
   useEffect(() => {
-    if (tg) {
-      tg.ready();
-      const initDataUnsafe = tg.initDataUnsafe;
-      if (initDataUnsafe && initDataUnsafe.user) {
-        const user = {
-          id: initDataUnsafe.user.id,
-          firstName: initDataUnsafe.user.first_name,
-          lastName: initDataUnsafe.user.last_name || 'Not provided',
+    async function initializeUser() {
+      let user;
+      if (window.Telegram?.WebApp?.ready()) {
+        const initDataUnsafe = window.Telegram.WebApp.initDataUnsafe;
+        user = {
+          user_id: initDataUnsafe.user.id,
+          first_name: initDataUnsafe.user.first_name,
+          last_name: initDataUnsafe.user.last_name || 'Not provided'
         };
-        setUserData(user);
-        checkUserExistence(user.id); // Mock function to check user existence
+      } else {
+        // Mock data for local development
+        user = {
+          user_id: "111",
+          first_name: "Test",
+          last_name: "User"
+        };
+        console.log("Mocked user data:", user);
       }
-    } else {
-      console.error("Telegram WebApp API is not available.");
+
+      try {
+        const existingUser = await fetchUser(user.user_id);
+        if (existingUser) {
+          setUserData(existingUser);
+          setUserExists(true);
+        } else {
+          // User does not exist, proceed to welcome screen to join
+          setUserData(user);
+          setUserExists(false);
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+      setLoading(false);
     }
+
+    initializeUser();
   }, []);
 
-  // Mock function to simulate checking user existence in database
-  const checkUserExistence = (userId) => {
-    // This would typically be an API call
-    setUserExists(false); // Change this based on real API response
-  };
-
-  const handleSaveProfile = (profileData) => {
-    console.log('Profile Data to Save:', profileData);
-    // Here you would typically make an API call to save the data to your backend
-  };
+  if (loading) {
+    return <div>Loading...</div>;  // or any loading spinner
+  }
 
   return (
     <Router>
       <div className="App">
         <Routes>
           <Route path="/" element={userExists ? <Navigate to="/profile" replace /> : <Navigate to="/welcome" replace />} />
-          <Route path="/welcome" element={<Welcome onJoin={() => setUserExists(true)} />} />
-          <Route path="/profile" element={<Profile userData={userData} onSave={handleSaveProfile} />} />
+          <Route path="/welcome" element={<Welcome onJoin={() => setUserExists(true)} userData={userData} />} />
+          <Route path="/profile" element={<Profile userData={userData} />} />
           <Route path="/members" element={<Members />} />
         </Routes>
         <ConditionalNavBar />
