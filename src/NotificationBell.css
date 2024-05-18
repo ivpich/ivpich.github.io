@@ -1,0 +1,42 @@
+.notification-bell {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-block;
+  z-index: 1000;
+}
+
+.notification-bell button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 65px;
+  background-color: rgba(105, 136, 92, 0.89);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+  width: 300px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.dropdown.show {
+  max-height: 200px; /* Adjust as needed */
+  transition: max-height 0.3s ease-in;
+}
+
+.notification-item {
+  padding: 10px;
+  border-bottom: 1px solid rgba(19, 158, 110, 0.32);
+}
+
+.no-notifications {
+  padding: 10px;
+  color: rgb(255, 255, 255);
+}

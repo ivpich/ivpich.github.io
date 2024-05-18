@@ -1,51 +1,76 @@
 .profile-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  width: 100%; /* Full width */
-  max-width: 400px; /* Max width for the form */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%; /* Full width */
+    max-width: 400px; /* Max width for the form */
+    background-color: rgba(103, 143, 106, 0.21); /* Similar to members item */
+    border-radius: 50px; /* Rounded corners for consistency */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soft shadow for depth */
+    transition: transform 0.3s; /* Smooth transformation effect */
+    margin: 20px auto; /* Centering in the view and adding vertical spacing */
 }
 
 .profile-image {
-  width: 150px;
-  height: 150px;
-  background-image: url('/public/default-profile.jpg');
-  background-size: cover;
-  border-radius: 50%;
-  margin-bottom: 20px;
-  border: 2px solid rgba(253, 253, 253, 0.56); /* White border for profile image */
+    width: 150px;
+    height: 150px;
+    background-image: url('/public/default-profile.jpg');
+    background-size: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 2px solid rgba(253, 253, 253, 0.56); /* White border for profile image */
 }
 
 .profile-field {
-  text-align: left;
-  width: 100%;
-  padding: 8px 0;
+    text-align: left;
+    width: 100%;
+    padding: 8px 0;
 }
 
 .profile-field label {
-  font-weight: 900;
-  display: block;
-  margin-bottom: 5px;
-  color: #ffffff; /* Light grey color for labels */
+    font-weight: 900;
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff; /* Light grey color for labels */
 }
 
 .profile-field p {
-  font-weight: 550; /* Normal font weight for content */
-  padding-left: 0px; /* Indent text to distinguish from labels */
-  color: #fff; /* White color for text content */
+    font-weight: 550; /* Normal font weight for content */
+    padding-left: 0px; /* Indent text to distinguish from labels */
+    color: #fff; /* White color for text content */
+    word-break: break-word; /* Ensure long words break properly */
 }
 
-.profile-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  width: 100%; /* Full width */
-  max-width: 400px; /* Max width for the form */
-  background-color: rgba(103, 143, 106, 0.21); /* Similar to members item */
-  border-radius: 50px; /* Rounded corners for consistency */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soft shadow for depth */
-  transition: transform 0.3s; /* Smooth transformation effect */
-  margin: 20px auto; /* Centering in the view and adding vertical spacing */
+.profile-field textarea {
+    width: 100%;
+    max-width: 100%;
+    height: 100px; /* Default height */
+    resize: none; /* Prevent manual resizing */
+    padding: 10px;
+    box-sizing: border-box; /* Include padding in width/height */
+    font-size: 14px;
+}
+
+.profile-field input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* Additional styles for buttons, containers, etc. */
+button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
 }
