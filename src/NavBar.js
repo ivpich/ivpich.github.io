@@ -9,7 +9,7 @@ function NavBar() {
       left: 0,
       right: 0,
       width: '100%',
-      backgroundColor: '#040c01',
+      backgroundColor: '#040101',
       display: 'flex',
       justifyContent: 'space-evenly',
       padding: '10px 0'

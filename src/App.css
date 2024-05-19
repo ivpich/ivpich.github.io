@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: 'Lato', sans-serif;
-  background-color: rgb(6, 27, 13); /* Dark background */
+  background: linear-gradient(135deg, #102e23, #080b20);
   color: white;
   display: flex;
   justify-content: center;
