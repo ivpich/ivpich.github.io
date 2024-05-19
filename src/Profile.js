@@ -174,7 +174,16 @@ function Profile({ userData }) {
                         </div>
                         <div className="profile-field">
                             <label>Telegram:</label>
-                            <p>{userDetails.telegram}</p>
+                            {editMode ? (
+                                <input
+                                    name="telegram"
+                                    value={userDetails.telegram}
+                                    onChange={handleChange}
+                                    onFocus={() => handleFocus(bioRef)}
+                                />
+                            ) : (
+                                <p>{userDetails.telegram}</p>
+                            )}
                         </div>
                     </div>
                 </div>

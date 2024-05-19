@@ -8,7 +8,7 @@
     align-items: center;
     padding: 20px;
     width: 90%;
-    max-width: 400px; /* Adjusted for mobile */
+    max-width: 350px; /* Increased max-width for consistency */
     background: linear-gradient(135deg, rgba(10, 15, 33, 0.68), rgba(19, 158, 110, 0.32));
     border-radius: 20px; /* Subtle rounded corners */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -28,31 +28,39 @@
 
 .top-section {
     display: flex;
+    flex-direction: column; /* Stacks columns vertically */
     width: 100%;
-    margin-bottom: 20px; /* Added space between top of container and fields */
+}
+
+@media (min-width: 768px) {
+    .top-section {
+        flex-direction: row; /* Side by side on larger screens */
+    }
 }
 
 .left-column, .right-column {
-    width: 50%;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Align items to the left */
+    align-items: center; /* Center items */
+    padding: 10px;
 }
 
 .profile-image {
-    width: 130px; /* Reduced size */
-    height: 130px;
+    width: 120px; /* Reduced size */
+    height: 120px;
     background-image: url('/public/default-profile.jpg');
     background-size: cover;
     border-radius: 50%;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-top: 10px;
     border: 3px solid rgba(8, 23, 32, 0.75);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .profile-field {
     text-align: left;
-    width: 100%;
+    width: 90%;
     padding: 5px 0;
 }
 
@@ -86,6 +94,11 @@
     border-radius: 8px;
     margin-bottom: 10px;
     transition: border-color 0.3s;
+    resize: none; /* Prevent resizing */
+}
+
+.profile-field textarea {
+    min-height: 100px; /* Ensure minimum height for text area */
 }
 
 .profile-field textarea:focus, .profile-field input:focus {
@@ -95,6 +108,7 @@
 
 .bio-field {
     width: 100%;
+    max-width: 350px;
     text-align: left;
     margin-bottom: 20px;
 }
@@ -122,11 +136,11 @@ button:hover {
 }
 
 .experience-bar {
-    position: sticky;
+    position: relative;
     background: linear-gradient(135deg, #141b25, #2b3159); /* Gradient pattern */
     border-radius: 15px;
     height: 25px;
-    width: 70%;
+    width: 100%; /* Ensure full width */
 }
 
 .experience-bar-fill {
@@ -178,8 +192,8 @@ button:hover {
 }
 
 .titles-container {
-    width: 70%;
-    margin-bottom: 5px;
+    width: 100%;
+    margin-bottom: 10px;
     text-align: center;
 }
 
