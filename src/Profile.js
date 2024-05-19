@@ -135,43 +135,50 @@ function Profile({ userData }) {
         <div className="profile-wrapper">
             {renderNftModal()}
             <div className={`profile-container ${selectedNft ? 'blurred' : ''}`}>
-                <div className="profile-image"></div>
-                <div className="experience-bar-container">
-                    {renderExperienceBar()}
+                <div className="top-section">
+                    <div className="left-column">
+                        <div className="profile-image"></div>
+                        <div className="titles-container">
+                            {renderTitles()}
+                        </div>
+                        <div className="experience-bar-container">
+                            {renderExperienceBar()}
+                        </div>
+                    </div>
+                    <div className="right-column">
+                        <div className="profile-field">
+                            <label>Имя:</label>
+                            {editMode ? (
+                                <input
+                                    name="first_name"
+                                    value={userDetails.first_name}
+                                    onChange={handleChange}
+                                    onFocus={() => handleFocus(bioRef)}
+                                />
+                            ) : (
+                                <p>{userDetails.first_name}</p>
+                            )}
+                        </div>
+                        <div className="profile-field">
+                            <label>Фамилия:</label>
+                            {editMode ? (
+                                <input
+                                    name="last_name"
+                                    value={userDetails.last_name}
+                                    onChange={handleChange}
+                                    onFocus={() => handleFocus(bioRef)}
+                                />
+                            ) : (
+                                <p>{userDetails.last_name}</p>
+                            )}
+                        </div>
+                        <div className="profile-field">
+                            <label>Telegram:</label>
+                            <p>{userDetails.telegram}</p>
+                        </div>
+                    </div>
                 </div>
-                <div className="titles-container">
-                    {renderTitles()}
-                </div>
-                <div className="nft-showcase-container">
-                    {renderNFTShowcase()}
-                </div>
-                <div className="profile-field">
-                    <label>Имя:</label>
-                    {editMode ? (
-                        <input
-                            name="first_name"
-                            value={userDetails.first_name}
-                            onChange={handleChange}
-                            onFocus={() => handleFocus(bioRef)}
-                        />
-                    ) : (
-                        <p>{userDetails.first_name}</p>
-                    )}
-                </div>
-                <div className="profile-field">
-                    <label>Фамилия:</label>
-                    {editMode ? (
-                        <input
-                            name="last_name"
-                            value={userDetails.last_name}
-                            onChange={handleChange}
-                            onFocus={() => handleFocus(bioRef)}
-                        />
-                    ) : (
-                        <p>{userDetails.last_name}</p>
-                    )}
-                </div>
-                <div className="profile-field">
+                <div className="profile-field bio-field">
                     <label>О себе:</label>
                     {editMode ? (
                         <textarea
@@ -183,6 +190,9 @@ function Profile({ userData }) {
                     ) : (
                         <p>{userDetails.bio}</p>
                     )}
+                </div>
+                <div className="nft-showcase-container">
+                    {renderNFTShowcase()}
                 </div>
                 {isOwnProfile && (
                     <button onClick={editMode ? handleSave : () => setEditMode(true)}>

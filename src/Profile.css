@@ -1,5 +1,5 @@
 .profile-wrapper {
-    position: relative;
+    position: static;
 }
 
 .profile-container {
@@ -26,29 +26,41 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+.top-section {
+    display: flex;
+    width: 100%;
+}
+
+.left-column, .right-column {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left */
+}
+
 .profile-image {
-    width: 120px; /* Reduced for mobile */
-    height: 120px;
+    width: 130px; /* Reduced size */
+    height: 130px;
     background-image: url('/public/default-profile.jpg');
     background-size: cover;
     border-radius: 50%;
-    margin-bottom: 20px;
-    border: 3px solid rgba(253, 253, 253, 0.75);
+    margin-bottom: 10px;
+    border: 3px solid rgba(0, 0, 0, 0.75);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .profile-field {
     text-align: left;
     width: 100%;
-    padding: 8px 0;
+    padding: 5px 0;
 }
 
 .profile-field label {
-    font-weight: 700;
+    font-weight: 750;
     display: block;
     margin-bottom: 8px;
     color: #ffffff;
-    font-size: 14px; /* Adjusted for mobile */
+    font-size: 16px; /* Adjusted for mobile */
 }
 
 .profile-field p {
@@ -75,10 +87,16 @@
     outline: none;
 }
 
+.bio-field {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
 button {
     padding: 10px 20px;
     margin-top: 20px;
-    background-color: #4CAF50;
+    background-color: rgba(19, 158, 110, 0.81);
     color: white;
     border: none;
     border-radius: 8px;
@@ -98,15 +116,15 @@ button:hover {
 }
 
 .experience-bar {
-    position: relative;
-    background-color: #071e0f;
+    position: sticky;
+    background-color: #1d2435;
     border-radius: 15px;
     height: 25px;
-    width: 100%;
+    width: 70%;
 }
 
 .experience-bar-fill {
-    background-color: #4caf50;
+    background-color: rgba(19, 158, 110, 0.32);
     border-radius: 15px;
     height: 100%;
     transition: width 0.5s ease-in-out;
@@ -154,7 +172,7 @@ button:hover {
 }
 
 .titles-container {
-    width: 100%;
+    width: 70%;
     margin-bottom: 5px;
     text-align: center;
 }
@@ -239,8 +257,18 @@ button:hover {
 
 @media (max-width: 768px) {
     .profile-container {
+        flex-direction: column;
         padding: 15px;
         max-width: 90%;
+    }
+
+    .top-section {
+        flex-direction: column;
+    }
+
+    .left-column, .right-column {
+        width: 100%;
+        align-items: center; /* Center align items */
     }
 
     .profile-image {
