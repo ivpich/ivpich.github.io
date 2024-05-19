@@ -52,8 +52,8 @@ function Members() {
                             <img src="/default-profile.jpg" alt="Profile" className="member-image" />
                             <div className="member-details">
                                 <div className="member-name">{member.first_name} {member.last_name}</div>
-                                <div className="member-experience">Experience: {member.trust_points}</div>
-                                <div className="member-title">{member.title || 'Member'}</div>
+                                <div className="member-experience">Trust: {member.trust_points}</div>
+                                <div className="member-title">{member.title || 'Гильдеец'}</div>
                             </div>
                         </div>
                     ))}

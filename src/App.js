@@ -32,7 +32,7 @@ function App() {
                     username: initDataUnsafe.user.username,
                     user_id: initDataUnsafe.user.id.toString(),
                     first_name: initDataUnsafe.user.first_name,
-                    last_name: initDataUnsafe.user.last_name || 'Not provided'
+                    last_name: initDataUnsafe.user.last_name || ''
                 };
 
                 try {
@@ -53,8 +53,8 @@ function App() {
                 const mocked_user = {
                     username: "ivpich",
                     user_id: "883234",
-                    first_name: "Очень новый пользователь",
-                    last_name: "Очень сильно"
+                    first_name: "Очень",
+                    last_name: "Тест"
                 };
                 setUserData(mocked_user);
                 setUserExists(true);

@@ -96,20 +96,6 @@ function Profile({ userData }) {
         );
     };
 
-    const renderTitles = () => {
-        if (!userDetails.titles || userDetails.titles.length === 0) {
-            return <div>No titles available</div>;
-        }
-
-        return (
-            <div className="titles-container">
-                {userDetails.titles.map((title, index) => (
-                    <div key={index} className="title-item">{title.title}</div>
-                ))}
-            </div>
-        );
-    };
-
     const closeModal = () => {
         setSelectedNft(null);
     };
@@ -139,7 +125,7 @@ function Profile({ userData }) {
                     <div className="left-column">
                         <div className="profile-image"></div>
                         <div className="titles-container">
-                            {renderTitles()}
+                            <div className="title-item">{userDetails.title}</div>
                         </div>
                         <div className="experience-bar-container">
                             {renderExperienceBar()}

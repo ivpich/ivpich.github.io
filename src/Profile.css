@@ -7,7 +7,7 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    width: 90%;
+    width: 350px;
     max-width: 350px; /* Increased max-width for consistency */
     background: linear-gradient(135deg, rgba(10, 15, 33, 0.68), rgba(19, 158, 110, 0.32));
     border-radius: 20px; /* Subtle rounded corners */
@@ -257,22 +257,15 @@ button:hover {
 .close-button {
     position: absolute;
     top: 0px;
-    right: 15px;
-    background-color: rgba(244, 67, 54, 0);
+    right: 10px;
     color: #af0e0e;
-    border: none;
-    width: 10px;
-    height: 40px;
+    width: 0px;
+    height: 30px;
     font-size: 40px;
-    line-height: 0px;
-    text-align: left;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    line-height: 5px;
 }
 
-.close-button:hover {
-    background-color: #e53935;
-}
+
 
 @media (max-width: 768px) {
     .profile-container {
