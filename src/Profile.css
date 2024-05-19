@@ -1,3 +1,8 @@
+body, html, #root {
+    height: 100%;
+    margin: 0;
+}
+
 .profile-wrapper {
     position: static;
 }
@@ -7,8 +12,9 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    width: 350px;
-    max-width: 350px; /* Increased max-width for consistency */
+    padding-bottom: 40px;
+    width: 320px;
+    max-width: 350px; /* Adjusted for mobile and desktop */
     background: linear-gradient(135deg, rgba(10, 15, 33, 0.68), rgba(19, 158, 110, 0.32));
     border-radius: 20px; /* Subtle rounded corners */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -28,22 +34,24 @@
 
 .top-section {
     display: flex;
-    flex-direction: column; /* Stacks columns vertically */
+    flex-wrap: wrap; /* Allow wrapping for mobile view */
     width: 100%;
-}
-
-@media (min-width: 768px) {
-    .top-section {
-        flex-direction: row; /* Side by side on larger screens */
-    }
+    margin-bottom: 20px; /* Added space between top of container and fields */
 }
 
 .left-column, .right-column {
-    flex: 1;
+    width: 50%; /* Take full width in mobile view */
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center items */
-    padding: 10px;
+    align-items: start; /* Center align items */
+    margin-bottom: 15px; /* Add space between sections */
+}
+
+@media (min-width: 768px) {
+    .left-column, .right-column {
+        width: 50%;
+        align-items: flex-start; /* Align items to the left */
+    }
 }
 
 .profile-image {
@@ -52,15 +60,14 @@
     background-image: url('/public/default-profile.jpg');
     background-size: cover;
     border-radius: 50%;
-    margin-bottom: 20px;
-    margin-top: 10px;
+    margin-bottom: 10px;
     border: 3px solid rgba(8, 23, 32, 0.75);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .profile-field {
     text-align: left;
-    width: 90%;
+    width: 100%;
     padding: 5px 0;
 }
 
@@ -94,11 +101,6 @@
     border-radius: 8px;
     margin-bottom: 10px;
     transition: border-color 0.3s;
-    resize: none; /* Prevent resizing */
-}
-
-.profile-field textarea {
-    min-height: 100px; /* Ensure minimum height for text area */
 }
 
 .profile-field textarea:focus, .profile-field input:focus {
@@ -108,7 +110,6 @@
 
 .bio-field {
     width: 100%;
-    max-width: 350px;
     text-align: left;
     margin-bottom: 20px;
 }
@@ -136,11 +137,11 @@ button:hover {
 }
 
 .experience-bar {
-    position: relative;
+    position: sticky;
     background: linear-gradient(135deg, #141b25, #2b3159); /* Gradient pattern */
     border-radius: 15px;
     height: 25px;
-    width: 100%; /* Ensure full width */
+    width: 80%;
 }
 
 .experience-bar-fill {
@@ -192,9 +193,9 @@ button:hover {
 }
 
 .titles-container {
-    width: 100%;
+    width: 90%;
     margin-bottom: 10px;
-    text-align: center;
+    text-align: left;
 }
 
 .title-item {
@@ -233,7 +234,7 @@ button:hover {
 }
 
 .modal-content {
-    background-color: #01030b;
+    background-color: rgba(2, 0, 0, 0.32);
     padding: 20px;
     border-radius: 10px;
     position: relative;
@@ -252,26 +253,15 @@ button:hover {
 
 .modal-info {
     text-align: left;
-}
-
-.close-button {
-    position: absolute;
-    top: 0px;
-    right: 10px;
-    color: #af0e0e;
-    width: 0px;
-    height: 30px;
-    font-size: 40px;
-    line-height: 5px;
+    color: #ffffff;
 }
 
 
-
-@media (max-width: 768px) {
+@media (max-width: 350px) {
     .profile-container {
         flex-direction: column;
         padding: 15px;
-        max-width: 90%;
+        max-width: 100%; /* Ensure it fits on mobile */
     }
 
     .top-section {
@@ -280,12 +270,12 @@ button:hover {
 
     .left-column, .right-column {
         width: 100%;
-        align-items: center; /* Center align items */
+        align-items: start; /* Center align items */
     }
 
     .profile-image {
-        width: 100px;
-        height: 100px;
+        width: 30px;
+        height: 30px;
     }
 
     .experience-bar-container {
