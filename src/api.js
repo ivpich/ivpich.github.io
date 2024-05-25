@@ -1,5 +1,5 @@
 const BASE_URL = 'https://guild-web-app.ru/api';
-// const BASE_URL = 'http://localhost:8000';
+// const BASE_URL = 'http://localhost:8000/api';
 
 async function fetchUser(userId) {
     const response = await fetch(`${BASE_URL}/users/${userId}`);
@@ -41,8 +41,5 @@ async function fetchUsers() {
     return response.json();
 }
 
-async function fetchNotifications(userId) {
-    return ''
-}
 
-export { fetchUser, createUser, updateUser, fetchUsers, fetchNotifications};
+export { fetchUser, createUser, updateUser, fetchUsers};

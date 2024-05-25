@@ -6,7 +6,6 @@ import Welcome from './Welcome';
 import NavBar from './NavBar';
 import Members from './Members';
 import {fetchUser} from './api';
-import NotificationBell from './NotificationBell';
 
 
 function ConditionalNavBar() {
@@ -73,7 +72,6 @@ function App() {
     return (
         <Router>
             <div className="App">
-                <NotificationBell />
                 <Routes>
                     <Route path="/" element={userExists ? <Navigate to="/profile" replace/> :
                         <Navigate to="/welcome" replace/>}/>

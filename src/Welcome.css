@@ -1,6 +1,6 @@
 .welcome-container {
-  background-color: rgb(6, 27, 13); /* Dark background similar to Figma */
-  color: white;
+  background: linear-gradient(135deg, #102e23, #080b20);
+  color: white; /* Ensure the container text is white */
   text-align: center;
   padding: 50px 20px; /* Adjust padding as needed */
   height: 100vh;
@@ -11,20 +11,24 @@
 }
 
 .welcome-image {
-  width: 150px; /* Adjust size as needed */
-  height: 150px;
+  width: 200px; /* Adjust size as needed */
+  height: 200px;
   margin-bottom: 20px;
 }
 
-h1 {
+.welcome-container h1 {
   font-size: 24px;
   font-weight: bold;
+  color: #ffffff !important; /* Ensure the color is set to white */
   margin-bottom: 20px;
+  padding-left: 20px; /* Add space to the left */
 }
 
-p {
+.welcome-container p {
   font-size: 16px;
   margin-bottom: 30px;
+  color: #ffffff !important; /* Ensure the color is set to white */
+  padding-left: 20px; /* Add space to the left */
 }
 
 .join-button {

@@ -146,6 +146,19 @@ function Profile({ userData }) {
                             )}
                         </div>
                         <div className="profile-field">
+                            <label>Отчество:</label>
+                            {editMode ? (
+                                <input
+                                    name="middle_name"
+                                    value={userDetails.middle_name || ''}
+                                    onChange={handleChange}
+                                    onFocus={() => handleFocus(bioRef)}
+                                />
+                            ) : (
+                                <p>{userDetails.middle_name}</p>
+                            )}
+                        </div>
+                        <div className="profile-field">
                             <label>Фамилия:</label>
                             {editMode ? (
                                 <input
@@ -184,6 +197,18 @@ function Profile({ userData }) {
                         />
                     ) : (
                         <p>{userDetails.bio}</p>
+                    )}
+                </div>
+                <div className="profile-field interests-field">
+                    <label>Интересы и цели:</label>
+                    {editMode ? (
+                        <textarea
+                            name="interests_and_goals"
+                            value={userDetails.interests_and_goals || ''}
+                            onChange={handleChange}
+                        />
+                    ) : (
+                        <p>{userDetails.interests_and_goals}</p>
                     )}
                 </div>
                 <div className="nft-showcase-container">
