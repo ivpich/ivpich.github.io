@@ -1,0 +1,48 @@
+/* src/components/TrustAnimation.css */
+.animation-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1000;
+}
+
+.trust-message {
+    color: gold;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.notification-message {
+    color: gold;
+    font-size: 18px;
+    margin: 0px 0;
+}
+
+.trust-points {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: gold;
+    margin-top: 10px;
+}
+
+.accept-reward-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #ffdd57;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.accept-reward-button:hover {
+    background-color: #e6c556;
+}

@@ -5,6 +5,8 @@ import Profile from './Profile';
 import Welcome from './Welcome';
 import NavBar from './NavBar';
 import Members from './Members';
+import TrustAnimation from './TrustAnimation';
+
 import {fetchUser} from './api';
 
 
@@ -73,6 +75,9 @@ function App() {
         <Router>
             <div className="App">
                 <Routes>
+                    <Route path="/trust-animation"
+                           element={<TrustAnimation trustPoints={50}/>}/> {/* Example usage with 50 trust points */}
+
                     <Route path="/" element={userExists ? <Navigate to="/profile" replace/> :
                         <Navigate to="/welcome" replace/>}/>
                     <Route path="/welcome" element={<Welcome onJoin={() => setUserExists(true)} userData={userData}/>}/>
