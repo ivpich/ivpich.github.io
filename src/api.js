@@ -1,5 +1,5 @@
-const BASE_URL = 'https://guild-web-app.ru/api';
-// const BASE_URL = 'http://localhost:8000/api';
+// const BASE_URL = 'https://guild-web-app.ru/api';
+const BASE_URL = 'http://localhost:8000/api';
 
 async function fetchUser(userId) {
     const response = await fetch(`${BASE_URL}/users/${userId}`);
@@ -41,5 +41,23 @@ async function fetchUsers() {
     return response.json();
 }
 
+async function fetchUnclaimedRewards(userId) {
+    const response = await fetch(`${BASE_URL}/users/${userId}/unclaimed_rewards`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch unclaimed rewards');
+    }
+    return response.json();
+}
 
-export { fetchUser, createUser, updateUser, fetchUsers};
+async function claimReward(userId) {
+    const response = await fetch(`${BASE_URL}/users/${userId}/claim_reward`, {
+        method: 'POST',
+    });
+    if (!response.ok) {
+        throw new Error('Failed to claim reward');
+    }
+    return response.json();
+}
+
+
+export { fetchUser, createUser, updateUser, fetchUsers, fetchUnclaimedRewards, claimReward};

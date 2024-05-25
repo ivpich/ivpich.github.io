@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './App.css'
-import {BrowserRouter as Router, Route, Routes, Navigate, useLocation} from 'react-router-dom';
+import {HashRouter as Router, Route, Routes, Navigate, useLocation} from 'react-router-dom';
 import Profile from './Profile';
 import Welcome from './Welcome';
 import NavBar from './NavBar';
@@ -75,14 +75,13 @@ function App() {
         <Router>
             <div className="App">
                 <Routes>
-                    <Route path="/trust-animation"
-                           element={<TrustAnimation trustPoints={50}/>}/> {/* Example usage with 50 trust points */}
-
                     <Route path="/" element={userExists ? <Navigate to="/profile" replace/> :
                         <Navigate to="/welcome" replace/>}/>
                     <Route path="/welcome" element={<Welcome onJoin={() => setUserExists(true)} userData={userData}/>}/>
                     <Route path="/profile" element={<Profile userData={userData}/>}/>
                     <Route path="/members" element={<Members/>}/>
+                    <Route path="/trust-animation"
+                           element={<TrustAnimation trustPoints={50}/>}/> {/* Example usage with 50 trust points */}
                 </Routes>
                 <ConditionalNavBar/>
             </div>

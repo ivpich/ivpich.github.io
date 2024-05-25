@@ -293,3 +293,42 @@ button:hover {
         font-size: 14px;
     }
 }
+
+/* src/components/Profile.css */
+.claim-rewards-button {
+    background-color: gold;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.claim-rewards-button:hover {
+    background-color: #ffd700;
+    transform: scale(1.05);
+}
+
+.profile-container.blurred-rewards {
+    filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.99);
+    pointer-events: none; /* Disable interaction with the blurred content */
+}
+
+.rewards-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.75); /* Dark background */
+    z-index: 1000;
+}
+
+/* Ensure other styles are also present here */
