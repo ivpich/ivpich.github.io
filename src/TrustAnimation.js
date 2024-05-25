@@ -7,7 +7,7 @@ import './TrustAnimation.css';
 const TrustAnimation = ({ trustPoints, notification, onClaim }) => {
     return (
         <div className="animation-container">
-            <Lottie animationData={animationData} loop={false} />
+            <Lottie animationData={animationData} loop={true} />
             <div className="trust-message">
                 <h2>Ваша награда:</h2>
                 {notification && <p className="notification-message">{notification}</p>}

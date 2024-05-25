@@ -1,11 +1,11 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Profile.css';
-import {updateUser, fetchUser, fetchUnclaimedRewards} from './api';
-import {useLocation, useNavigate} from 'react-router-dom';
+import { updateUser, fetchUser, fetchUnclaimedRewards } from './api';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ClaimRewards from './ClaimRewards';
 
-function Profile({userData}) {
-    const {state} = useLocation();
+function Profile({ userData }) {
+    const { state } = useLocation();
     const navigate = useNavigate();
     const isOwnProfile = !state;
     const initialUserData = state ? state.userData : userData;
@@ -16,6 +16,7 @@ function Profile({userData}) {
     const [selectedNft, setSelectedNft] = useState(null);
     const [showClaimRewards, setShowClaimRewards] = useState(false);
     const [hasUnclaimedRewards, setHasUnclaimedRewards] = useState(false);
+    const [currentReward, setCurrentReward] = useState(null);
     const bioRef = useRef(null);
 
     useEffect(() => {
@@ -49,7 +50,7 @@ function Profile({userData}) {
     }
 
     const handleChange = (e) => {
-        const {name, value} = e.target;
+        const { name, value } = e.target;
         setUserDetails(prevDetails => ({
             ...prevDetails,
             [name]: value
@@ -72,15 +73,20 @@ function Profile({userData}) {
     };
 
     const handleFocus = (ref) => {
-        ref.current.scrollIntoView({behavior: 'smooth', block: 'center'});
+        ref.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    };
+
+    const handleRewardClaimComplete = () => {
+        setShowClaimRewards(false);
+        setHasUnclaimedRewards(false);
     };
 
     const renderExperienceBar = () => {
-        const {trust_points, max_trust_points} = userDetails;
+        const { trust_points, max_trust_points } = userDetails;
         const percentage = (trust_points / max_trust_points) * 100;
         return (
             <div className="experience-bar">
-                <div className="experience-bar-fill" style={{width: `${percentage}%`}}></div>
+                <div className="experience-bar-fill" style={{ width: `${percentage}%` }}></div>
                 <div className="experience-bar-text">{trust_points} / {max_trust_points}</div>
             </div>
         );
@@ -95,7 +101,7 @@ function Profile({userData}) {
             <div className="nft-showcase">
                 {userDetails.nfts.map((nft, index) => (
                     <div key={index} className="nft-item" onClick={() => setSelectedNft(nft)}>
-                        <img src={nft.image_url} alt={nft.name} className="nft-image"/>
+                        <img src={nft.image_url} alt={nft.name} className="nft-image" />
                     </div>
                 ))}
             </div>
@@ -113,7 +119,7 @@ function Profile({userData}) {
             <div className="modal-overlay" onClick={closeModal}>
                 <div className="modal-content" onClick={e => e.stopPropagation()}>
                     <button className="close-button" onClick={closeModal}>×</button>
-                    <img src={selectedNft.image_url} alt={selectedNft.name} className="modal-image"/>
+                    <img src={selectedNft.image_url} alt={selectedNft.name} className="modal-image" />
                     <div className="modal-info">
                         <h2>{selectedNft.name}</h2>
                         <p>{selectedNft.description}</p>
@@ -126,10 +132,10 @@ function Profile({userData}) {
     return (
         <div className="profile-wrapper">
             {renderNftModal()}
-            <div
-                className={`profile-container ${selectedNft ? 'blurred' : ''} ${showClaimRewards ? 'blurred-rewards' : ''}`}>
+            <div className={`profile-container ${selectedNft ? 'blurred' : ''} ${showClaimRewards ? 'blurred-rewards' : ''}`}>
                 <div className="top-section">
                     <div className="left-column">
+                        <div className="user-id"> user_id: {userDetails.user_id}</div>
                         <div className="profile-image"></div>
                         <div className="titles-container">
                             <div className="title-item">{userDetails.title}</div>
@@ -221,7 +227,7 @@ function Profile({userData}) {
                 <div className="nft-showcase-container">
                     {renderNFTShowcase()}
                 </div>
-                {hasUnclaimedRewards && (
+                {isOwnProfile && hasUnclaimedRewards && !showClaimRewards && (
                     <button className="claim-rewards-button" onClick={() => setShowClaimRewards(true)}>
                         Принять награды
                     </button>
@@ -235,7 +241,12 @@ function Profile({userData}) {
                     <button onClick={() => navigate(-1)}>Return Back</button>
                 )}
             </div>
-            {showClaimRewards && <ClaimRewards userId={userDetails.user_id}/>}
+            {showClaimRewards && (
+                <ClaimRewards
+                    userId={userDetails.user_id}
+                    onComplete={handleRewardClaimComplete}
+                />
+            )}
         </div>
     );
 }

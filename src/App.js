@@ -1,11 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import './App.css'
-import {HashRouter as Router, Route, Routes, Navigate, useLocation} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes, Navigate, useLocation} from 'react-router-dom';
 import Profile from './Profile';
 import Welcome from './Welcome';
 import NavBar from './NavBar';
 import Members from './Members';
-import TrustAnimation from './TrustAnimation';
 
 import {fetchUser} from './api';
 
@@ -80,8 +79,6 @@ function App() {
                     <Route path="/welcome" element={<Welcome onJoin={() => setUserExists(true)} userData={userData}/>}/>
                     <Route path="/profile" element={<Profile userData={userData}/>}/>
                     <Route path="/members" element={<Members/>}/>
-                    <Route path="/trust-animation"
-                           element={<TrustAnimation trustPoints={50}/>}/> {/* Example usage with 50 trust points */}
                 </Routes>
                 <ConditionalNavBar/>
             </div>
