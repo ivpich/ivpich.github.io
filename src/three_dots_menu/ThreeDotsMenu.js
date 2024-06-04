@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './ThreeDotsMenu.css';
 import Notification from './Notification'; // Import the Notification component
+import AdjustTrustPopup from './AdjustTrustPopup'; // Import the AdjustTrustPopup component
 
-const privilegedUserIds = ["401201825", "226387751", "883234"];
+const privilegedUserIds = ["401201825", "226387751"];
 
 function ThreeDotsMenu({ userId }) {
     const [menuOpen, setMenuOpen] = useState(false);
     const [currentUserId, setCurrentUserId] = useState("883234"); // Default to testing user ID
     const [notification, setNotification] = useState(null); // State for notification
+    const [showAdjustTrustPopup, setShowAdjustTrustPopup] = useState(false); // State for showing the popup
     const menuRef = useRef(null);
 
     useEffect(() => {
@@ -33,12 +35,12 @@ function ThreeDotsMenu({ userId }) {
     const handleRecommendClick = () => {
         const recommendationLink = `https://t.me/TLA_AI_bot/guild?startapp=user_id=${userId}`;
         navigator.clipboard.writeText(recommendationLink)
-            .then(() => setNotification('Ссылка с рекомендацией скопирована'))
+            .then(() => setNotification('Recommendation link copied!'))
             .catch((error) => console.error('Failed to copy link:', error));
     };
 
-    const handlePlaceholderClick = () => {
-        alert('Placeholder button clicked!');
+    const handleAdjustTrustClick = () => {
+        setShowAdjustTrustPopup(true);
     };
 
     return (
@@ -48,11 +50,12 @@ function ThreeDotsMenu({ userId }) {
                 <div className="menu">
                     <button onClick={handleRecommendClick} className="menu-button">Recommend</button>
                     {privilegedUserIds.includes(currentUserId) && (
-                        <button onClick={handlePlaceholderClick} className="menu-button">Placeholder</button>
+                        <button onClick={handleAdjustTrustClick} className="menu-button">Adjust Trust (Admin)</button>
                     )}
                 </div>
             )}
             {notification && <Notification message={notification} onClose={() => setNotification(null)} />}
+            {showAdjustTrustPopup && <AdjustTrustPopup userId={userId} onClose={() => setShowAdjustTrustPopup(false)} />}
         </div>
     );
 }

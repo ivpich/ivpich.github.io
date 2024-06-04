@@ -14,8 +14,8 @@ function NavBar() {
       justifyContent: 'space-evenly',
       padding: '10px 0'
     }}>
-      <Link to="/profile" style={{ color: 'white', textDecoration: 'none' }}>Profile</Link>
-      <Link to="/members" style={{ color: 'white', textDecoration: 'none' }}>Members</Link>
+      <Link to="/profile" style={{ color: 'white', textDecoration: 'none' }}>Профиль</Link>
+      <Link to="/members" style={{ color: 'white', textDecoration: 'none' }}>Зал Гильдии</Link>
     </div>
   );
 }

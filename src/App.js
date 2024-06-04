@@ -65,16 +65,16 @@ function App() {
                 // Mock data for local development
                 const mocked_user = {
                     username: "ivpich",
-                    user_id: "0000",
+                    user_id: "883234",
                     first_name: "Очень",
                     last_name: "Тест"
                 };
                 setUserData(mocked_user);
-                setUserExists(false);
+                setUserExists(true);
 
                 // Mock initDataUnsafe.start_param
                 const mocked_initDataUnsafe = {
-                    start_param: "user_id=226387751"
+                    start_param: null
                 };
                 const recommendedUserId = new URLSearchParams(mocked_initDataUnsafe.start_param).get('user_id');
                 if (recommendedUserId) {
@@ -104,7 +104,7 @@ function App() {
                     <Route path="/" element={userExists ? (recommendedUserData ? <Navigate to="/recommended-profile" replace /> : <Navigate to="/profile" replace />) : <Navigate to="/welcome" replace />} />
                     <Route path="/welcome" element={<Welcome onJoin={() => setUserExists(true)} userData={userData} recommendedUserData={recommendedUserData} />} />
                     <Route path="/profile" element={<Profile userData={userData} />} />
-                    <Route path="/recommended-profile" element={<Profile userData={recommendedUserData} />} />
+                    <Route path="/recommended-profile" element={<Profile userData={recommendedUserData} isRecommended={true} />} />
                     <Route path="/members" element={<Members />} />
                 </Routes>
                 <ConditionalNavBar />

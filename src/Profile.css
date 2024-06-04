@@ -297,6 +297,7 @@ button:hover {
 /* src/components/Profile.css */
 .claim-rewards-button {
     background-color: gold;
+    margin: 5px;
     color: black;
     border: none;
     padding: 10px 20px;
@@ -356,4 +357,18 @@ button:hover {
 .telegram-link:hover {
     background: rgba(5, 208, 248, 0.73); /* Darker background on hover */
     color: white;
+}
+
+.recommended-text {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    padding: 9px;
+    background-color: rgba(19, 158, 110, 0.1); /* Light background to match the theme */
+    color: #76f6ff; /* Matching the application's color theme */
+    border-left: 5px solid #16bfcd; /* Adding a border to the left */
+    font-size: 14px; /* Adjusted for readability */
+    font-weight: bold;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
 }

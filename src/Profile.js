@@ -5,10 +5,10 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import ClaimRewards from './ClaimRewards';
 import ThreeDotsMenu from './three_dots_menu/ThreeDotsMenu'; // Import the new component
 
-function Profile({userData}) {
+function Profile({userData, isRecommended}) {
     const {state} = useLocation();
     const navigate = useNavigate();
-    const isOwnProfile = !state;
+    const isOwnProfile = !isRecommended && !state;
     const initialUserData = state ? state.userData : userData;
     const [userDetails, setUserDetails] = useState(initialUserData);
     const [editMode, setEditMode] = useState(false);
@@ -220,6 +220,16 @@ function Profile({userData}) {
                         </div>
                     </div>
                 </div>
+                {isOwnProfile && hasUnclaimedRewards && !showClaimRewards && (
+                    <button className="claim-rewards-button" onClick={() => setShowClaimRewards(true)}>
+                        Принять награды
+                    </button>
+                )}
+                {isRecommended && (
+                    <div className="recommended-text">
+                        Этот пользователь был рекомендован Вам.
+                    </div>
+                )}
                 <div className="profile-field bio-field">
                     <label>О себе:</label>
                     {editMode ? (
@@ -248,17 +258,12 @@ function Profile({userData}) {
                 <div className="nft-showcase-container">
                     {renderNFTShowcase()}
                 </div>
-                {isOwnProfile && hasUnclaimedRewards && !showClaimRewards && (
-                    <button className="claim-rewards-button" onClick={() => setShowClaimRewards(true)}>
-                        Принять награды
-                    </button>
-                )}
                 {isOwnProfile && (
                     <button onClick={editMode ? handleSave : () => setEditMode(true)}>
                         {editMode ? 'Save' : 'Edit'}
                     </button>
                 )}
-                {!isOwnProfile && (
+                {!isOwnProfile && !isRecommended && (
                     <button onClick={() => navigate(-1)}>Return Back</button>
                 )}
             </div>
